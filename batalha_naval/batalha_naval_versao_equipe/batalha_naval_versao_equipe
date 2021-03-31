@@ -1,0 +1,31 @@
+from tabuleiro import tabuleiro
+
+tam_tabuleiro = 10
+tam_casa = 50
+meia_casa = tam_casa / 2
+borda = 50
+
+
+def setup():
+    size(600, 600)
+    textSize(18)
+    textAlign(CENTER, CENTER)
+    
+def draw():
+    background(200)
+    for i in range(tam_tabuleiro):
+        for j in range(tam_tabuleiro):
+            if (i, j) in tabuleiro:
+                fill(0)
+            else:
+                fill(255)
+            square(i * tam_casa + borda, 
+                   j * tam_casa + borda, 
+                   tam_casa)
+    fill(0)
+    for n in range(tam_tabuleiro):
+        pos =  n * tam_casa + borda + meia_casa 
+        text(n, meia_casa, pos)
+        text(n, width - meia_casa, pos)
+        text(n, pos, meia_casa * 1.2)
+        text(n, pos, height - meia_casa * 1.2)
